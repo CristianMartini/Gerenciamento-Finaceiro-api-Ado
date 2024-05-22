@@ -1,0 +1,52 @@
+# README - Gerenciamento Financeiro
+
+## Introdução
+Este projeto de gerenciamento financeiro é uma aplicação web que facilita a gestão de receitas e despesas pessoais. Com uma interface intuitiva, os usuários podem adicionar, visualizar e gerenciar suas transações financeiras, monitorando assim a saúde financeira de maneira eficaz e organizada.
+
+## Funcionalidades
+- **Cadastro de Usuários:** Permite que novos usuários criem uma conta no sistema.
+- **Login e Autenticação:** Acesso seguro para usuários cadastrados.
+- **Adicionar Transações:** Usuários podem registrar suas receitas e despesas.
+- **Visualização de Transações:** As transações são listadas em uma tabela, permitindo uma visualização clara das finanças.
+- **Cálculo Automático de Totais:** O sistema calcula automaticamente as somas de receitas, despesas e o saldo geral.
+
+## Tecnologias Utilizadas
+- **Node.js:** Ambiente de execução JavaScript para o servidor.
+- **Express.js:** Framework para aplicativos web Node.js, facilitando a criação de rotas e APIs.
+- **Bootstrap:** Framework para desenvolvimento de interfaces responsivas.
+- **Axios:** Biblioteca JavaScript para realizar requisições HTTP.
+- **bcrypt.js:** Biblioteca para hashing de senhas.
+- **express-session:** Middleware para gerenciamento de sessões em Node.js.
+
+## Estrutura de Diretórios
+- **index.js:** Script principal do servidor, configurando rotas e middleware.
+- **public/:** Diretório para arquivos estáticos como HTML, CSS e JavaScript.
+- **data/**
+  - **transactions.json:** Armazenamento das transações dos usuários.
+  - **users.json:** Dados dos usuários registrados.
+
+## Detalhamento das Funcionalidades
+
+### Autenticação
+A autenticação é realizada através de uma combinação de e-mail e senha. A senha é armazenada de forma segura utilizando a biblioteca `bcrypt`, que aplica um hash à senha antes de salvá-la no arquivo `users.json`.
+
+### Registro e Login
+Os endpoints `/register` e `/login` tratam, respectivamente, do registro de novos usuários e do processo de login. Ambos utilizam métodos `POST` para receber dados do usuário, que são validados e processados. Se bem-sucedidos, redirecionam o usuário para a página principal de gerenciamento financeiro.
+
+### Gerenciamento de Sessões
+Utilizando `express-session`, o sistema cria uma sessão para cada usuário que se autentica. Isso permite que o usuário acesse suas informações sem precisar se autenticar a cada nova requisição.
+
+### Transações Financeiras
+A adição de transações é feita através de um modal que solicita informações como tipo (receita ou despesa), categoria, valor e data. Esses dados são enviados ao servidor via `Axios` e salvos em `transactions.json`.
+
+
+### Visualização e Cálculos
+As transações são exibidas em uma tabela na página `calculate.html`, onde scripts JavaScript processam e exibem os totais de receitas, despesas e o saldo final. A função `updateTotals` percorre as transações acumulando os valores conforme o tipo para atualizar os totais exibidos.
+
+## Configuração e Execução
+
+### Instalação de Dependências
+No diretório do projeto, execute:
+```bash
+npm install
+

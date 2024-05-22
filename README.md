@@ -1,1 +1,0 @@
-# Gerenciamento-Finaceiro-api-Ado

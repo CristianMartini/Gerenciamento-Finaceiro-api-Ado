@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gerenciamento Financeiro</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.22.0/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-light bg-light">
+        <div class="container mt-4">
+            <h3><a class="navbar-brand" href="#">Gerenciamento Financeiro</a></h3>
+            <p>Bem-vindo, <span id="username">Usuário</span>!</p>
+            <div class="d-flex">
+                <a href="/login" class="btn btn-dark">Sair</a>
+            </div>
+        </div>
+    </nav>
+    <div aria-live="polite" aria-atomic="true" class="position-relative">
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div id="toastMessage" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <strong class="me-auto">Notificação</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    Aqui vai a mensagem.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-4 container-form">
+        <div class="mb-3 d-flex">
+            <button type="button" class="btn button__Receita me-2" data-bs-toggle="modal"
+                data-bs-target="#modalReceita">Adicionar Receita</button>
+            <button type="button" class="btn button__Despesa " data-bs-toggle="modal"
+                data-bs-target="#modalDespesa">Adicionar Despesa</button>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Categoria</th>
+                    <th>Data</th>
+                    <th>Valor (R$)</th>
+            <tbody id="transactionsList">
+
+            </tbody>
+            <tfoot>
+                <tr class="table-success">
+                    <th colspan="3">Total Receitas:</th>
+                    <td id="totalReceitas">R$ 0</td>
+                </tr>
+                <tr class="table-danger">
+                    <th colspan="3">Total Despesas:</th>
+                    <td id="totalDespesas">R$ 0</td>
+                </tr>
+                <tr class="table-info">
+                    <th colspan="3">Saldo:</th>
+                    <td id="saldoFinal">R$ 0</td>
+                </tr>
+            </tfoot>
+        </table>
+
+
+    </div>
+    <!-- Modais para Receitas e Despesas -->
+    <!-- Modal de Receita -->
+    <div class="modal fade" id="modalReceita" tabindex="-1" aria-labelledby="modalReceitaLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalReceitaLabel">Nova Receita</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formReceita">
+                        <div class="mb-3">
+                            <label for="tipoReceita" class="form-label">Tipo de Receita</label>
+                            <select class="form-control" id="tipoReceita" required>
+                                <option value="" disabled selected>Selecione o tipo de receita...</option>
+                                <option>Salário</option>
+                                <option>Renda Extra</option>
+                                <option>Presentes</option>
+                            </select>
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="valorReceita" class="form-label">Valor</label>
+                            <input type="number" class="form-control" id="valorReceita" step="0.01" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="dataReceita" class="form-label">Data</label>
+                            <input type="date" class="form-control" id="dataReceita" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Despesa -->
+    <div class="modal fade" id="modalDespesa" tabindex="-1" aria-labelledby="modalDespesaLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalDespesaLabel">Nova Despesa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formDespesa">
+                        <div class="mb-3">
+                            <label for="tipoDespesa" class="form-label">Tipo de Despesa</label>
+                            <select class="form-control" id="tipoDespesa" required>
+                                <option value="" disabled selected>Selecione o tipo de despesa...</option>
+                                <option>Alimentação</option>
+                                <option>Moradia</option>
+                                <option>Combustível</option>
+                                <option>Estudo</option>
+                                <option>Despesas Fixas</option>
+                                <option>Despesas Pessoais</option>
+                            </select>
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="valorDespesa" class="form-label">Valor</label>
+                            <input type="number" class="form-control" id="valorDespesa" step="0.01" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="dataDespesa" class="form-label">Data</label>
+                            <input type="date" class="form-control" id="dataDespesa" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="app.js"></script>
+
+
+
+
+
+</body>
+
+</html>
