@@ -60,10 +60,7 @@
             } else if (!senha) {
                 alert('Por favor, insira a sua senha.');
                 event.preventDefault(); // Impede o envio do formulário
-            } else if (!validarEmail(email)) {
-                alert('Por favor, insira um endereço de email válido.');
-                event.preventDefault(); // Impede o envio do formulário
-            }
+            } 
             // A função de validação de email pode ser algo assim:
             function validarEmail(email) {
                 var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
