@@ -1,26 +1,50 @@
+/* Estilos Gerais do Corpo */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #062f82, #e2e8f0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #2c3e50;
+}
+
 /* Estilos Gerais do Container */
 .container {
     max-width: 700px;
     margin: 30px auto;
-    padding: 25px;
+    padding: 30px;
     background: #ffffff;
     border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
 }
 
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Estilos para Títulos */
 h1 {
     color: #2c3e50;
     text-align: center;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 30px;
+    font-size: 2.5em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
-h3{
-    font-size: medium;
-    color: #2c3e50;
+
+h3 {
+    font-size: 1.5em;
+    color: #34495e;
     text-align: center;
-    font-weight: 300;
+    font-weight: 400;
     margin-bottom: 20px;
+    letter-spacing: 0.5px;
 }
 
 /* Estilos para o Formulário */
@@ -28,20 +52,21 @@ h3{
     display: block;
     margin-bottom: 8px;
     color: #34495e;
-    font-size: 15px;
+    font-size: 1em;
     font-weight: 600;
 }
 
 .form-control {
     display: block;
     width: 100%;
-    padding: 10px 15px;
+    padding: 12px 15px;
     margin-bottom: 18px;
-    border-radius: 6px;
+    border-radius: 8px;
     border: 1px solid #bdc3c7;
     background-color: #ecf0f1;
     box-sizing: border-box;
     transition: all 0.3s ease-in-out;
+    font-size: 1em;
 }
 
 .form-control:focus {
@@ -57,7 +82,7 @@ h3{
     width: 100%;
     padding: 12px 0;
     margin: 25px 0 15px;
-    border-radius: 6px;
+    border-radius: 8px;
     border: none;
     color: #fff;
     background: linear-gradient(45deg, #3498db, #2980b9);
@@ -82,13 +107,23 @@ h3{
 }
 
 /* Estilos para Mensagens de Alerta */
+.alert {
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 1em;
+}
+
 .alert-danger {
     color: #e74c3c;
     background-color: #fdedec;
-    border-color: #fcc9c8;
-    padding: 12px;
-    border-radius: 6px;
-    margin-bottom: 20px;
+    border: 1px solid #fcc9c8;
+}
+
+.alert-success {
+    color: #27ae60;
+    background-color: #e8f6e6;
+    border: 1px solid #c3e6cb;
 }
 
 .invalid-feedback {
@@ -112,18 +147,27 @@ h3{
 .btn-container button {
     flex-grow: 1;
 }
-.alert-success {
-    color: #27ae60;
-    background-color: #e8f6e6;
-    border-color: #c3e6cb;
-    padding: 12px;
-    border-radius: 6px;
-    margin-bottom: 20px;
-}
-a{
+
+/* Links */
+a {
     text-decoration: none;
+    color: inherit;
 }
+
+/* Botão de Logout */
 .logoutButton {
-    padding: 5px 250px;
-    
+    padding: 10px 20px;
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    font-weight: 600;
+}
+
+.logoutButton:hover {
+    background: #c0392b;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
