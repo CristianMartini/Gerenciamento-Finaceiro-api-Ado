@@ -1,9 +1,11 @@
 # Projeto de Gerenciamento Financeiro
 
 ## Descrição Geral
+
 Este projeto é uma aplicação web desenvolvida para permitir aos usuários gerenciar suas finanças pessoais de forma eficaz. Através desta aplicação, os usuários podem registrar suas receitas e despesas, visualizar um histórico de transações e obter um resumo de sua situação financeira atual.
 
 ## Tecnologias Utilizadas
+
 - **Node.js**: Utilizado como ambiente de execução do lado do servidor.
 - **Express**: Framework web utilizado para construir o servidor backend, facilitando a criação de rotas e a gestão de requisições HTTP.
 - **Bootstrap**: Framework CSS utilizado para desenvolver uma interface limpa e responsiva.
@@ -12,42 +14,51 @@ Este projeto é uma aplicação web desenvolvida para permitir aos usuários ger
 
 ## Estrutura do Projeto
 
-### Servidor (index.js)
+### Servidor (`index.js`)
+
 O arquivo `index.js` configura e executa o servidor Express que lida com todas as requisições HTTP. Aqui estão alguns componentes chave deste arquivo:
 
 #### Inicialização e Configuração
+
 - **Express e Middleware**: Configuração do servidor com middleware necessário para parsear respostas JSON e gerenciar sessões.
-- **Banco de Dados Simulado**: Utilização de arquivos JSON (`transactions.json` e `users.json`) para simular um banco de dados armazenando usuários e transações.
+- **Banco de Dados Simulado**: Utilização de arquivos JSON (`transactions.json` e `users.json`) para simular um banco de dados, armazenando usuários e transações.
 
 #### Rotas e Endpoints
+
 - **/register e /login**: Rotas para registro e login de usuários, incluindo criptografia de senha.
 - **/calculate**: Rota que serve a página principal após o usuário logar, mostrando transações e opções de gerenciamento.
 - **/add-transaction**: Endpoint para adicionar transações ao 'banco de dados'. As transações são salvas com um identificador único, categoria, tipo, valor e data.
 
 #### Funções Auxiliares
+
 - **initDataFile**: Verifica se o arquivo de dados existe; se não, cria um novo arquivo com dados padrão.
 - **getNextTransactionId**: Gera um ID único para cada nova transação, assegurando que cada entrada no banco de dados seja única.
 
 ### Armazenamento e Apresentação de Dados
+
 Dados são armazenados em arquivos JSON no servidor. Quando um usuário realiza uma ação que requer interação com o banco de dados (como registrar ou adicionar uma transação), o servidor lê e atualiza esses arquivos.
 
 - **Transações**: Armazenadas com informações detalhadas, facilitando relatórios e análises financeiras.
 - **Usuários**: Informações de usuário são armazenadas de forma segura, usando criptografia para senhas.
 
-### Screenshots
+## Screenshots
+
 Aqui estão alguns visuais da aplicação:
 
 #### Página de Login
-![Página de Login](url_para_imagem_de_login)
+
+[Image of Página de Login da aplicação]
 
 #### Dashboard
-![Dashboard](url_para_imagem_do_dashboard)
+
+[Image of Dashboard da aplicação]
 
 ## Instalação e Execução
+
 Para instalar e executar o projeto localmente, siga os passos abaixo:
 
 ```bash
-git clone <https://github.com/CristianMartini/Gerenciamento-Finaceiro-api-Ado>
-cd <Gerenciamento-Finaceiro-api-Ado>
+git clone [https://github.com/CristianMartini/Gerenciamento-Finaceiro-api-Ado](https://github.com/CristianMartini/Gerenciamento-Finaceiro-api-Ado)
+cd Gerenciamento-Finaceiro-api-Ado
 npm install
 npm start
